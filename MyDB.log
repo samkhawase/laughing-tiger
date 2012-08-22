@@ -1,0 +1,15 @@
+/*C3*/SET SCHEMA PUBLIC
+CONNECT USER SA
+drop table task if exists
+drop sequence hibernate_sequence
+create table task (ID bigint not null, NAME varchar(100) not null, primary key (ID))
+create sequence hibernate_sequence start with 1 increment by 1
+SET AUTOCOMMIT FALSE
+/*C4*/SET SCHEMA PUBLIC
+CONNECT USER SA
+SET AUTOCOMMIT FALSE
+ALTER SEQUENCE HIBERNATE_SEQUENCE RESTART WITH 2
+INSERT INTO TASK VALUES(1,'buy fruits')
+COMMIT
+SET AUTOCOMMIT TRUE
+/*C3*/SET AUTOCOMMIT TRUE
