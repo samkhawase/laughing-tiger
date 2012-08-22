@@ -2,7 +2,7 @@ package org.todoapp.main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +19,25 @@ public class ResourceServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
+		// PrintWriter out = resp.getWriter();
+		// out.print("response from Mars");
+		Map<String, String[]> params = req.getParameterMap();
 
-		out.print("response from Mars");
+		for (Map.Entry<String, String[]> item : params.entrySet()) {
+			resp.getWriter().println("Key: " + item.getKey());
+			for(String val: item.getValue())
+				resp.getWriter().println("value: "+val);
+		}
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		Map<String, String> params = req.getParameterMap();
+
+		for (Map.Entry<String, String> item : params.entrySet())
+			resp.getWriter().println(
+					"Key:" + item.getKey() + " Value: " + item.getValue());
 	}
 
 }
