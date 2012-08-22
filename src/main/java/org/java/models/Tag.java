@@ -1,5 +1,7 @@
 package org.java.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,10 +19,11 @@ public class Tag {
 	@Column(name="ID")
 	private Long tagId;
 	
-//	@Column(name="TAGNAME")
-	
-	@ManyToMany(targetEntity=org.java.models.Tag.class, mappedBy="tags")
+	@Column(name="TAGNAME")
 	private String tagName;
+	
+	@ManyToMany(targetEntity=org.java.models.Task.class, mappedBy="tags")
+	private List<Task> tasks;
 
 	public Tag(String tagName) {
 		super();

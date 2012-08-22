@@ -6,11 +6,13 @@
 	version="1.0">
 
 	<!-- A JPA Persistence Unit -->
-	<persistence-unit name="myFirstJpaUnit" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="myFirstJpaUnit"
+		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<!-- JPA entities must be registered here -->
 		<class>org.java.models.Task</class>
+		<class>org.java.models.Tag</class>
 
 		<properties>
 			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
@@ -18,13 +20,13 @@
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
-			<!-- Default is false for backwards compatibility. 
-			Should be used on all new projects -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<!-- Default is false for backwards compatibility. Should be used on all 
+				new projects -->
 			<property name="hibernate.id.new_generator_mappings" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
 		</properties>
-		
-		
+
+
 	</persistence-unit>
 
 </persistence>

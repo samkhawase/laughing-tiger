@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -39,6 +40,7 @@ public class Task implements Serializable {
 	private boolean isCompleted;
 
 	@ManyToMany(targetEntity = org.java.models.Tag.class)
+	@JoinTable(name="TASK_TAG")
 	private List<Tag> tags;
 
 	/* Constructors */

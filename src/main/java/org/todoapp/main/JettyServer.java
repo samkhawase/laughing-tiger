@@ -1,7 +1,6 @@
 package org.todoapp.main;
 
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
 import com.google.inject.servlet.GuiceFilter;

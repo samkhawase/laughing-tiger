@@ -1,7 +1,6 @@
 package org.todoapp.main;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -16,6 +15,7 @@ public class ResourceServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 5539084588355488784L;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -30,6 +30,7 @@ public class ResourceServlet extends HttpServlet {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

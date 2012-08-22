@@ -1,15 +1,29 @@
 /*C3*/SET SCHEMA PUBLIC
 CONNECT USER SA
+alter table TASK_TAG drop constraint FK164755C0220CA613
+alter table TASK_TAG drop constraint FK164755C03A41E139
+drop table TASK_TAG if exists
+drop table tag if exists
 drop table task if exists
 drop sequence hibernate_sequence
-create table task (ID bigint not null, NAME varchar(100) not null, primary key (ID))
+create table TASK_TAG (tasks_ID bigint not null, tags_ID bigint not null)
+create table tag (ID bigint not null, TAGNAME varchar(255), primary key (ID))
+create table task (ID bigint not null, CREATED_DATE timestamp, IS_COMPLETED boolean, PRIORITY integer, NAME varchar(100) not null, primary key (ID))
+alter table TASK_TAG add constraint FK164755C0220CA613 foreign key (tasks_ID) references task
+alter table TASK_TAG add constraint FK164755C03A41E139 foreign key (tags_ID) references tag
 create sequence hibernate_sequence start with 1 increment by 1
 SET AUTOCOMMIT FALSE
 /*C4*/SET SCHEMA PUBLIC
 CONNECT USER SA
 SET AUTOCOMMIT FALSE
 ALTER SEQUENCE HIBERNATE_SEQUENCE RESTART WITH 2
-INSERT INTO TASK VALUES(1,'buy fruits')
+ALTER SEQUENCE HIBERNATE_SEQUENCE RESTART WITH 3
+ALTER SEQUENCE HIBERNATE_SEQUENCE RESTART WITH 4
+INSERT INTO TAG VALUES(1,'personal')
+INSERT INTO TAG VALUES(2,'work')
+INSERT INTO TASK VALUES(3,'2012-08-22 16:43:31.341000000',FALSE,1,'buy fruits')
+INSERT INTO TASK_TAG VALUES(3,1)
+INSERT INTO TASK_TAG VALUES(3,2)
 COMMIT
 SET AUTOCOMMIT TRUE
 /*C3*/SET AUTOCOMMIT TRUE
