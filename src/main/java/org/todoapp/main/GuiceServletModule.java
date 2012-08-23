@@ -21,7 +21,7 @@ public class GuiceServletModule extends ServletModule {
     serve("/post/*").with(ResourceServlet.class, params);
     
     // generic catchall route at last
-    serve("/*").with(MainServlet.class, params);
+    serve("/item").with(MainServlet.class, params);
     
   }
 }

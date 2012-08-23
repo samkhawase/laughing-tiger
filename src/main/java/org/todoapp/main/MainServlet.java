@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -103,7 +102,8 @@ public class MainServlet extends HttpServlet {
 
 		logger.info("attempting to create new Task");
 		createNewTask();
-
+		
+		/*
 		List<Task> results = findTask();
 		response.getWriter().println("results size " + results.size());
 		for (Task task : results) {
@@ -112,6 +112,12 @@ public class MainServlet extends HttpServlet {
 							+ task.getTaskName() + " " + task.getCreatedDate()
 							+ " " + task.getPriority());
 		}
-
+		*/
+//		request.setAttribute("$$Guice$RDR", Boolean.TRUE);
+//		logger.info("redirecting...");
+		System.err.println(request.getContextPath()+" - redirecting to jsp...");
+		request.getRequestDispatcher("/WEB-INF/todo/index.jsp").forward(request, response);
+//		response.sendRedirect("/WEB-INF/todo/index.jsp");
+		
 	}
 }
